@@ -1,0 +1,311 @@
+/* =========================================
+   1. RESET & SETUP KERTAS
+   ========================================= */
+* {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #525659; /* Abu-abu gelap (Preview Mode) */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    line-height: 1.3;
+    color: #000;
+}
+
+/* Container Kertas A4 */
+.skt-paper {
+    width: 210mm;
+    min-height: 297mm;
+    background: white;
+    margin: 30px auto;
+    padding: 0;
+    position: relative;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+/* Area Konten Utama */
+.page-content {
+    padding-top: 44mm;    /* Ruang Header */
+    padding-bottom: 35mm; /* Ruang Footer */
+    padding-left: 15mm;   
+    padding-right: 15mm;  
+}
+
+/* =========================================
+   2. HEADER (FIXED)
+   ========================================= */
+.skt-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45mm; 
+    background: white;
+    padding: 10mm 15mm 0 15mm; 
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    z-index: 1000;
+}
+
+.header-left {
+    display: flex;
+    align-items: flex-start;
+}
+
+.logo-main {
+    height: 85px; 
+    width: auto;
+    object-fit: contain;
+}
+
+.header-right {
+    text-align: right;
+    font-size: 8pt;
+    color: #333;
+    line-height: 1.4;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 5px;
+}
+
+.company-name {
+    font-weight: 900;
+    font-size: 12pt;
+    color: #1F4E79;   /* Biru Tua */
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header-line {
+    position: fixed;
+    top: 35mm;
+    left: 15mm;
+    right: 15mm;
+    border-bottom: 2px solid #000;
+    z-index: 1000;
+}
+
+/* =========================================
+   3. FOOTER (FIXED & LOGO DIPERBESAR)
+   ========================================= */
+.skt-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35mm;
+    background: white;
+    padding: 0 15mm 10mm 15mm; 
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 8pt;
+    z-index: 9999;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px; 
+}
+
+.footer-logos-group {
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+}
+
+.footer-right {
+    display: flex;
+    align-items: flex-end;
+}
+
+/* --- UPDATE UKURAN LOGO FOOTER (LEBIH BESAR) --- */
+.img-memberof { 
+    height: 20px; /* Sebelumnya 15px */
+    width: auto; 
+    margin-left: 2px;
+}
+.img-bulet-kuning { 
+    height: 55px; /* Sebelumnya 42px - Diperbesar agar Proper */
+    width: auto; 
+} 
+.img-npma { 
+    height: 50px; /* Sebelumnya 38px */
+    width: auto; 
+}
+.img-iso { 
+    height: 60px; /* Sebelumnya 45px */
+    width: auto; 
+}
+
+/* =========================================
+   4. BODY SURAT (SPASI DIPERKETAT)
+   ========================================= */
+/* Penyesuaian agar teks naik ke atas (efek 2 enter) */
+
+.letter-meta {
+    margin-bottom: 15px; /* SEBELUMNYA 25px (Dikurangi 10px) */
+    width: 100%;
+}
+
+.letter-title {
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 14pt;
+    margin-top: 0px;
+    margin-bottom: 2px; /* Jarak judul ke nomor dirapatkan */
+}
+
+.letter-no {
+    text-align: center;
+    font-size: 11pt;
+    margin-bottom: 15px; /* SEBELUMNYA 30px (Dikurangi 15px) */
+    font-weight: bold;
+}
+
+.recipient-name {
+    font-weight: bold;
+    font-size: 11pt;
+}
+
+.content-text {
+    text-align: justify;
+    margin-bottom: 8px; /* SEBELUMNYA 12px (Dirapatkan antar paragraf) */
+    font-size: 10pt;
+    line-height: 1.4; /* Sedikit dirapatkan dari 1.5 */
+}
+
+.warning-list {
+    margin-left: 25px;
+    margin-bottom: 10px; /* SEBELUMNYA 15px */
+    text-align: justify;
+    line-height: 1.4;
+}
+
+.contact-info {
+    font-weight: bold;
+    color: #000;
+}
+
+/* Tanda Tangan */
+.signature-section {
+    margin-top: 10px; /* SEBELUMNYA 40px (Ditarik naik) */
+    float: left;
+    width: 250px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.sig-img {
+    height: 80px;
+    width: auto;
+    margin: 5px 0 5px -10px;
+}
+
+.sig-name {
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 2px;
+}
+
+/* =========================================
+   5. HALAMAN 2 (TABEL)
+   ========================================= */
+.page-break {
+    page-break-before: always;
+    display: block;
+    height: 1px;
+}
+
+.table-title {
+    font-weight: bold;
+    font-size: 11pt;
+    margin-bottom: 15px;
+    text-decoration: underline;
+}
+
+table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10pt;
+}
+
+table.data-table th, 
+table.data-table td {
+    border: 1px solid #000;
+    padding: 8px 10px;
+}
+
+table.data-table th {
+    background-color: #eee;
+    text-align: center;
+    font-weight: bold;
+}
+
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-bold { font-weight: bold; }
+
+/* =========================================
+   6. PRINT MEDIA QUERY
+   ========================================= */
+@media print {
+    body { 
+        background: white; 
+        margin: 0;
+        -webkit-print-color-adjust: exact; 
+    }
+    
+    .skt-paper {
+        width: 100%;
+        margin: 0;
+        box-shadow: none;
+    }
+    
+    .no-print { display: none !important; }
+
+    @page {
+        size: A4;
+        margin: 0; 
+    }
+    
+    .skt-header, .skt-footer {
+        background-color: white !important;
+    }
+
+    table th, table td.bg-grey { 
+        background-color: #eee !important; 
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+.no-print {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 99999;
+}
+.btn-print {
+    background: #1F4E79;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.btn-print:hover { background: #163a5c; }
